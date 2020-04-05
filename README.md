@@ -1,16 +1,37 @@
-# write_library_external
+# Write External Library
 
-A new Flutter project.
+## Step:
 
-## Getting Started
+### 1. Create External Library:
 
-This project is a starting point for a Flutter application.
+Source: https://github.com/huubao2309/write_library_external/tree/master/library/lib_math
 
-A few resources to get you started if this is your first Flutter project:
+### 2. Public class for using:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Source: https://github.com/huubao2309/write_library_external/blob/master/library/lib_math/lib/lib_math.dart
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+library lib_math;
+
+export 'src/lib_math_base.dart';
+export 'src/sin.dart' hide Sqrt;
+export 'src/cos.dart';
+```
+
+**Note**: `Hide` is a keyword for hiding class that preventing the user uses it.
+
+### 3. Add library at `pubspec.yaml`:
+
+```dart
+dependencies:
+  lib_math:
+    path: ../write_library_external/library/lib_math
+```
+
+### 4. Use method of library:
+
+```dart
+  var sin = math.Sin().of(90);
+  var cos = math.Cos().of(90);
+```
+
